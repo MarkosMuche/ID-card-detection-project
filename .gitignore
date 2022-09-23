@@ -6,3 +6,5 @@ Pre-trained_model/*
 model_graph/*
 venv/*
 .vscode/
+.ipynb_checkpoints/
+Annotations/

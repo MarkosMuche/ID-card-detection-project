@@ -186,9 +186,9 @@ def tf_example(group,path):
 
 def generateTFRecord():
     
-    if not os.path.exists(paths['annotation_path']+"\\train.record"):
-        w = tf.io.TFRecordWriter(paths['annotation_path']+"\\train.record");
-        examples = pd.read_csv(paths['annotation_path']+"\\id_card_labels_train.csv");
+    if not os.path.exists(os.path.join(paths['annotation_path'], "train.record")):
+        w = tf.io.TFRecordWriter(os.path.join(paths['annotation_path'], "train.record"));
+        examples = pd.read_csv(os.path.join(paths['annotation_path'], "id_card_labels_train.csv"));
         
         grouped = split(examples,'filename');
         
