@@ -4,3 +4,5 @@ Train/*
 Test/*
 Pre-trained_model/*
 model_graph/*
+venv/*
+.vscode/

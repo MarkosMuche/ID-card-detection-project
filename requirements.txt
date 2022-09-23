@@ -113,7 +113,6 @@ tensorboard-plugin-wit==1.8.1
 tensorflow==2.10.0
 tensorflow-estimator==2.10.0
 tensorflow-io-gcs-filesystem==0.27.0
-tensorflow-object-detection-api==0.1.1
 termcolor==2.0.1
 terminado==0.15.0
 tinycss2==1.1.1
