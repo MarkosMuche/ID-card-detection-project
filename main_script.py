@@ -100,17 +100,17 @@ def convert_xml_to_DataFrame(path):
 # create two csv from the dataframe one for train other for test
 def convert_df_to_csv():
     dataFrame= convert_xml_to_DataFrame(paths["train_img_path"]);
-    if not os.path.exists(paths["annotation_path"]+"\\id_card_labels_train.csv"):
+    if not os.path.exists(os.path.join(paths["annotation_path"], "id_card_labels_train.csv")):
         #conversion to csv file
-        dataFrame.to_csv(paths["annotation_path"]+"\\id_card_labels_train.csv",index=None)
+        dataFrame.to_csv(os.path.join(paths["annotation_path"], "id_card_labels_train.csv",index=None))
         print("Generated train csv sucessfully");
     else:
         print("Train CSV already generated")
     
     dataFrame= convert_xml_to_DataFrame(paths["test_img_path"]);
-    if not os.path.exists(paths["annotation_path"]+"\\id_card_labels_test.csv"):
+    if not os.path.exists(os.path.join(paths["annotation_path"], "id_card_labels_test.csv")):
         #conversion to csv file
-        dataFrame.to_csv(paths["annotation_path"]+"\\id_card_labels_test.csv",index=None)
+        dataFrame.to_csv(os.path.join(paths["annotation_path"], "id_card_labels_test.csv",index=None))
         print("Generated test csv sucessfully");
     else:
         print("Test CSV already generated")
@@ -128,7 +128,7 @@ def split(df,group):
 
 # gives the id of the label 
 def cls_text_to_int(class_name):
-    label_map = label_map_util.load_labelmap(paths["annotation_path"]+"\\label_map.pbtxt")
+    label_map = label_map_util.load_labelmap(os.path.join(paths["annotation_path"], "label_map.pbtxt"))
     label_map_dictonary = label_map_util.get_label_map_dict(label_map);
     print(label_map_dictonary);
     return label_map_dictonary[class_name]
@@ -199,11 +199,11 @@ def generateTFRecord():
            w.write(example.SerializeToString())
        
         w.close()
-        print("Sucessfully created train record at :", paths['annotation_path']+"\\train.record");
+        print("Sucessfully created train record at :", os.path.join(paths['annotation_path'], "train.record"));
     
-    if not os.path.exists(paths['annotation_path']+"\\test.record"):
-        w = tf.io.TFRecordWriter(paths['annotation_path']+"\\test.record");
-        examples = pd.read_csv(paths['annotation_path']+"\\id_card_labels_test.csv");
+    if not os.path.exists(os.path.join(paths['annotation_path'], "test.record")):
+        w = tf.io.TFRecordWriter(os.path.join(paths['annotation_path'], "test.record"));
+        examples = pd.read_csv(os.path.join(paths['annotation_path'], "id_card_labels_test.csv"));
         
         grouped = split(examples,'filename');
         
