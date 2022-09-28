@@ -14,7 +14,7 @@ wd = os.getcwd()
 #MODEL_PATH = os.path.join(wd,'model_graph','new_graph','saved_model');
 #LABELS_PATH = os.path.join(wd,'Annotations','label_map.pbtxt');
 
-MODEL_PATH = "" # add "model_graph" path from the drive
+MODEL_PATH = "/media/mark/New Volume/projects/Ben/ID-card-detection-project/results/Trained_model/my_faster_rcnn" # add "model_graph" path from the drive
 LABELS_PATH = "" # add the "Annotations" folder path 
 
 # load the trained model onto memory

@@ -46,6 +46,8 @@ def makeDir():
             print(f_path)
             if os.name == 'nt':
                 os.system('mkdir '+f_path)
+            else:
+                os.makedirs(path)
         
 #creates a label_map.pbtxt file
 # the structure of label map is 
@@ -58,8 +60,8 @@ def makeDir():
 def createLabelMap():
     label = {'name' : 'id_card','id':1}
     try:
-        if not os.path.exists(paths["annotation_path"]+"\\label_map.pbtxt"):
-            f = open(paths["annotation_path"]+"\\label_map.pbtxt","x");
+        if not os.path.exists(os.path.join(paths["annotation_path"],"label_map.pbtxt")):
+            f = open(os.path.join(paths["annotation_path"], "label_map.pbtxt","x"));
             f.write("item {\n");
             f.write("\tid: {}\n".format(label['id']));
             f.write("\tname: \'{}\'\n".format(label['name']));
@@ -74,7 +76,7 @@ def createLabelMap():
 def convert_xml_to_DataFrame(path):
     # a list to hold the values
     x_list = [];
-    for x_file in glob.glob(path+"\\*.xml"):
+    for x_file in glob.glob(path+"/*.xml"):
         # parse the xml file and get root
         tree = ET.parse(x_file);
         root = tree.getroot();
@@ -102,7 +104,7 @@ def convert_df_to_csv():
     dataFrame= convert_xml_to_DataFrame(paths["train_img_path"]);
     if not os.path.exists(os.path.join(paths["annotation_path"], "id_card_labels_train.csv")):
         #conversion to csv file
-        dataFrame.to_csv(os.path.join(paths["annotation_path"], "id_card_labels_train.csv",index=None))
+        dataFrame.to_csv(os.path.join(paths["annotation_path"], "id_card_labels_train.csv"))
         print("Generated train csv sucessfully");
     else:
         print("Train CSV already generated")
@@ -214,7 +216,7 @@ def generateTFRecord():
            w.write(example.SerializeToString())
        
         w.close()
-        print("Sucessfully created train record at :", paths['annotation_path']+"\\test.record");
+        print("Sucessfully created train record at :", os.path.join(paths['annotation_path'],"test.record"));
     
 
 

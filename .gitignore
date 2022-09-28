@@ -8,3 +8,5 @@ venv/*
 .vscode/*
 .ipynb_checkpoints/*
 Annotations/*
+results/
+Trained_model/
