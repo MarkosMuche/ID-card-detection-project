@@ -10,3 +10,4 @@ venv/*
 Annotations/*
 results/
 Trained_model/
+pre-trained-models/
