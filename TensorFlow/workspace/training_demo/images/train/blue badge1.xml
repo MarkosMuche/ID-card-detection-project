@@ -1,0 +1,26 @@
+<annotation>
+	<folder>train</folder>
+	<filename>blue badge1.PNG</filename>
+	<path>/media/mark/New Volume/projects/Ben/ID-card-detection-project/TensorFlow/workspace/training_demo/images/train/blue badge1.PNG</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>595</width>
+		<height>189</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>expiry_date</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>30</xmin>
+			<ymin>64</ymin>
+			<xmax>201</xmax>
+			<ymax>89</ymax>
+		</bndbox>
+	</object>
+</annotation>

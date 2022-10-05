@@ -1,0 +1,26 @@
+<annotation>
+	<folder>test</folder>
+	<filename>0_32895380.jpg</filename>
+	<path>/media/mark/New Volume/projects/Ben/ID-card-detection-project/TensorFlow/workspace/training_demo/images/test/0_32895380.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>615</width>
+		<height>486</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>expiry_date</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>87</xmin>
+			<ymin>183</ymin>
+			<xmax>404</xmax>
+			<ymax>229</ymax>
+		</bndbox>
+	</object>
+</annotation>

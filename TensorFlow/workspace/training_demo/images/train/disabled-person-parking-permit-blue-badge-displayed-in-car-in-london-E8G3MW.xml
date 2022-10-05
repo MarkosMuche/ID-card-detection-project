@@ -1,0 +1,26 @@
+<annotation>
+	<folder>train</folder>
+	<filename>disabled-person-parking-permit-blue-badge-displayed-in-car-in-london-E8G3MW.jpg</filename>
+	<path>/media/mark/New Volume/projects/Ben/ID-card-detection-project/TensorFlow/workspace/training_demo/images/train/disabled-person-parking-permit-blue-badge-displayed-in-car-in-london-E8G3MW.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1071</width>
+		<height>1390</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>expiry_date</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>56</xmin>
+			<ymin>483</ymin>
+			<xmax>423</xmax>
+			<ymax>647</ymax>
+		</bndbox>
+	</object>
+</annotation>
