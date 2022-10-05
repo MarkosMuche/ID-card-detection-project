@@ -12,27 +12,27 @@
 	</size>
 	<segmented>0</segmented>
 	<object>
-		<name>expiry_date</name>
+		<name>id</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>254</xmin>
-			<ymin>42</ymin>
-			<xmax>1180</xmax>
-			<ymax>218</ymax>
+			<xmin>130</xmin>
+			<ymin>13</ymin>
+			<xmax>1804</xmax>
+			<ymax>713</ymax>
 		</bndbox>
 	</object>
 	<object>
-		<name>expiry_date</name>
+		<name>id</name>
 		<pose>Unspecified</pose>
-		<truncated>0</truncated>
+		<truncated>1</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>134</xmin>
-			<ymin>1268</ymin>
-			<xmax>1232</xmax>
-			<ymax>1426</ymax>
+			<xmin>12</xmin>
+			<ymin>868</ymin>
+			<xmax>1875</xmax>
+			<ymax>1949</ymax>
 		</bndbox>
 	</object>
 </annotation>

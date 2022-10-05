@@ -11,3 +11,4 @@ Annotations/*
 results/
 Trained_model/
 pre-trained-models/
+exported_models/
