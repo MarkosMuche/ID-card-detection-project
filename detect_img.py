@@ -13,15 +13,8 @@ from matplotlib import pyplot as plt
 
 
 # checks the model input signature which expects a batch of 3-color images of type uint8
-def single_model_inference(model,image):
+def single_model_inference(image,MODEL_PATH,LABELS_PATH ):
     
-    wd = os.getcwd()
-    #MODEL_PATH = os.path.join(wd,'model_graph','new_graph','saved_model');
-    #LABELS_PATH = os.path.join(wd,'Annotations','label_map.pbtxt');
-
-    MODEL_PATH = "TensorFlow/workspace/training_demo/exported_models/saved_model" # add "model_graph" path from the drive
-    LABELS_PATH = "TensorFlow/workspace/training_demo/annotations/label_map.pbtxt" # add the "Annotations" folder path 
-
     # load the trained model onto memory
     detection_model = tf.saved_model.load(MODEL_PATH)
 
@@ -34,7 +27,7 @@ def single_model_inference(model,image):
     # model expects batch of images so tf.newaxis
     input_tensor = input_tensor[tf.newaxis,...]
     # running inference
-    detect_fn = model.signatures['serving_default']
+    detect_fn = detection_model.signatures['serving_default']
     output_dict = detect_fn(input_tensor)
     
     # convert all batch tensor output to numpy array
@@ -47,12 +40,12 @@ def single_model_inference(model,image):
     # detection classes must be an integer
     output_dict['detection_classes'] = output_dict['detection_classes'].astype(np.int64)
     
-    return output_dict, detection_model, category_index;
+    return output_dict, category_index;
 
 
-def show_inference(image_np):
+def show_inference(image_np,  MODEL_PATH, LABELS_PATH):
     # perform the detection
-    output_dict, model, category_index = single_model_inference(model, image_np)
+    output_dict, category_index = single_model_inference(image_np, MODEL_PATH, LABELS_PATH)
     # visualize the detected object
     final_img = v_utils.visualize_boxes_and_labels_on_image_array(image_np, 
                                                                   output_dict['detection_boxes'],
