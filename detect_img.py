@@ -10,21 +10,23 @@ from matplotlib import pyplot as plt
 
 # taken from: 
 # https://github.com/jakkcoder/Widows-Object-Detection-Setup/blob/main/object_detection_tutorial.ipynb
-wd = os.getcwd()
-#MODEL_PATH = os.path.join(wd,'model_graph','new_graph','saved_model');
-#LABELS_PATH = os.path.join(wd,'Annotations','label_map.pbtxt');
 
-MODEL_PATH = "TensorFlow/workspace/training_demo/exported_models/saved_model" # add "model_graph" path from the drive
-LABELS_PATH = "TensorFlow/workspace/training_demo/annotations/label_map.pbtxt" # add the "Annotations" folder path 
-
-# load the trained model onto memory
-detection_model = tf.saved_model.load(MODEL_PATH)
-
-# list of strings to add correct label for each box
-category_index = label_map_util.create_category_index_from_labelmap(LABELS_PATH,use_display_name=True)
 
 # checks the model input signature which expects a batch of 3-color images of type uint8
 def single_model_inference(model,image):
+    
+    wd = os.getcwd()
+    #MODEL_PATH = os.path.join(wd,'model_graph','new_graph','saved_model');
+    #LABELS_PATH = os.path.join(wd,'Annotations','label_map.pbtxt');
+
+    MODEL_PATH = "TensorFlow/workspace/training_demo/exported_models/saved_model" # add "model_graph" path from the drive
+    LABELS_PATH = "TensorFlow/workspace/training_demo/annotations/label_map.pbtxt" # add the "Annotations" folder path 
+
+    # load the trained model onto memory
+    detection_model = tf.saved_model.load(MODEL_PATH)
+
+    # list of strings to add correct label for each box
+    category_index = label_map_util.create_category_index_from_labelmap(LABELS_PATH,use_display_name=True)
     # conver image to numpy array
     image = np.asarray(image)
     # the model takes a tensor of image
@@ -45,12 +47,12 @@ def single_model_inference(model,image):
     # detection classes must be an integer
     output_dict['detection_classes'] = output_dict['detection_classes'].astype(np.int64)
     
-    return output_dict;
+    return output_dict, detection_model, category_index;
 
 
-def show_inference(model,image_np):
+def show_inference(image_np):
     # perform the detection
-    output_dict = single_model_inference(model, image_np)
+    output_dict, model, category_index = single_model_inference(model, image_np)
     # visualize the detected object
     final_img = v_utils.visualize_boxes_and_labels_on_image_array(image_np, 
                                                                   output_dict['detection_boxes'],
@@ -62,42 +64,21 @@ def show_inference(model,image_np):
     return (final_img)
 
 
+if __name__ == "__main__":
 
-# cap = cv2.VideoCapture(0)
-# while 1:
-#     _,img = cap.read()
-#     img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
-    
-#     final_img = show_inference(detection_model, img)
-#     final_img = cv2.cvtColor(final_img,cv2.COLOR_RGB2BGR)
-    
-#     cv2.imshow('object detection',final_img)
-    
-#     if cv2.waitKey(1) == ord('q'):
-#         break
-
-# cap.release()
-# cv2.destroyAllWindows()
-
-
-#img_path = [os.path.join(wd,"Test","IMG22.jpg"),
-#            os.path.join(wd,"Test","IMG15.jpg"),
-#            os.path.join(wd,"Test","IMG14.jpg")
-            
-#            ]
-img_path = ['TensorFlow/workspace/training_demo/images/train/Screenshot-2022-01-13-at-12.12.08.png',] # add all your image path here Example : "E:\Train\IMG22.jpg"
-            
-i = 0
-for p in img_path:
-    i += 1
-    img = cv2.imread(p)
-    img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
-    
-    final_Img = show_inference(detection_model, img)
-    final_Img = cv2.cvtColor(final_Img,cv2.COLOR_RGB2BGR)
-    image_name = 'Saved_img_{}.jpg'.format(str(i));
-    cv2.imwrite(image_name,final_Img)
-    print(image_name,' saved sucessfully');
+    img_path = ['TensorFlow/workspace/training_demo/images/train/Screenshot-2022-01-13-at-12.12.08.png',] # add all your image path here Example : "E:\Train\IMG22.jpg"
+                
+    i = 0
+    for p in img_path:
+        i += 1
+        img = cv2.imread(p)
+        img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
+        
+        final_Img = show_inference(img)
+        final_Img = cv2.cvtColor(final_Img,cv2.COLOR_RGB2BGR)
+        image_name = 'Saved_img_{}.jpg'.format(str(i));
+        cv2.imwrite(image_name,final_Img)
+        print(image_name,' saved sucessfully');
 
 
     
