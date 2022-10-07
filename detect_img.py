@@ -14,8 +14,8 @@ wd = os.getcwd()
 #MODEL_PATH = os.path.join(wd,'model_graph','new_graph','saved_model');
 #LABELS_PATH = os.path.join(wd,'Annotations','label_map.pbtxt');
 
-MODEL_PATH = "/media/mark/New Volume/projects/Ben/ID-card-detection-project/TensorFlow/workspace/training_demo/exported_models/saved_model" # add "model_graph" path from the drive
-LABELS_PATH = "/media/mark/New Volume/projects/Ben/ID-card-detection-project/TensorFlow/workspace/training_demo/annotations/label_map.pbtxt" # add the "Annotations" folder path 
+MODEL_PATH = "TensorFlow/workspace/training_demo/exported_models/saved_model" # add "model_graph" path from the drive
+LABELS_PATH = "TensorFlow/workspace/training_demo/annotations/label_map.pbtxt" # add the "Annotations" folder path 
 
 # load the trained model onto memory
 detection_model = tf.saved_model.load(MODEL_PATH)
@@ -85,7 +85,7 @@ def show_inference(model,image_np):
 #            os.path.join(wd,"Test","IMG14.jpg")
             
 #            ]
-img_path = ['TensorFlow/workspace/training_demo/images/test/0_32895380.jpg',] # add all your image path here Example : "E:\Train\IMG22.jpg"
+img_path = ['TensorFlow/workspace/training_demo/images/train/Screenshot-2022-01-13-at-12.12.08.png',] # add all your image path here Example : "E:\Train\IMG22.jpg"
             
 i = 0
 for p in img_path:
