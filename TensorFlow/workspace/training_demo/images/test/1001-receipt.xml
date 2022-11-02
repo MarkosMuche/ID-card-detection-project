@@ -1,0 +1,26 @@
+<annotation>
+	<folder>test</folder>
+	<filename>1001-receipt.jpg</filename>
+	<path>/media/mark/New Volume/projects/Ben/ID-card-detection-project/TensorFlow/workspace/training_demo/images/test/1001-receipt.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>645</width>
+		<height>1000</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>receipt</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>54</xmin>
+			<ymin>43</ymin>
+			<xmax>639</xmax>
+			<ymax>952</ymax>
+		</bndbox>
+	</object>
+</annotation>
